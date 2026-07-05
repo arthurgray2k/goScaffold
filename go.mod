@@ -1,4 +1,4 @@
-module goscaffold
+module github.com/arthurgray2k/goScaffold
 
 go 1.26.4
 

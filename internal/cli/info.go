@@ -5,7 +5,7 @@ import (
 	"io/fs"
 
 	"github.com/spf13/cobra"
-	"goscaffold/internal/templates"
+	"github.com/arthurgray2k/goScaffold/internal/templates"
 )
 
 func newInfoCmd(manager templates.Manager) *cobra.Command {

@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"goscaffold/internal/filesystem"
-	"goscaffold/internal/templates"
-	"goscaffold/internal/variables"
+	"github.com/arthurgray2k/goScaffold/internal/filesystem"
+	"github.com/arthurgray2k/goScaffold/internal/templates"
+	"github.com/arthurgray2k/goScaffold/internal/variables"
 )
 
 var ErrFileExists = errors.New("file already exists")

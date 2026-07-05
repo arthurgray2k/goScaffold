@@ -49,10 +49,10 @@ import (
     "os"
     "path/filepath"
     
-    "goscaffold/internal/filesystem"
-    "goscaffold/internal/generator"
-    "goscaffold/internal/templates"
-    "goscaffold/internal/variables"
+    "github.com/arthurgray2k/goScaffold/internal/filesystem"
+    "github.com/arthurgray2k/goScaffold/internal/generator"
+    "github.com/arthurgray2k/goScaffold/internal/templates"
+    "github.com/arthurgray2k/goScaffold/internal/variables"
 )
 
 func main() {

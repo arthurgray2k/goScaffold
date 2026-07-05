@@ -1,8 +1,8 @@
 package main
 
 import (
-	"goscaffold"
-	"goscaffold/internal/cli"
+	"github.com/arthurgray2k/goScaffold"
+	"github.com/arthurgray2k/goScaffold/internal/cli"
 )
 
 func main() {

@@ -8,8 +8,8 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"goscaffold/internal/config"
-	"goscaffold/internal/templates"
+	"github.com/arthurgray2k/goScaffold/internal/config"
+	"github.com/arthurgray2k/goScaffold/internal/templates"
 )
 
 // Execute adds all child commands to the root command and sets flags appropriately.

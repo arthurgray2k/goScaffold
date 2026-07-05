@@ -6,8 +6,8 @@ import (
 	"testing"
 	"testing/fstest"
 
-	"goscaffold/internal/templates"
-	"goscaffold/internal/variables"
+	"github.com/arthurgray2k/goScaffold/internal/templates"
+	"github.com/arthurgray2k/goScaffold/internal/variables"
 )
 
 // MockFS implements filesystem.FS for testing

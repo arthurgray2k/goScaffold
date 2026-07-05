@@ -10,11 +10,11 @@ import (
 	"time"
 
 	"github.com/spf13/cobra"
-	"goscaffold/internal/config"
-	"goscaffold/internal/filesystem"
-	"goscaffold/internal/generator"
-	"goscaffold/internal/templates"
-	"goscaffold/internal/variables"
+	"github.com/arthurgray2k/goScaffold/internal/config"
+	"github.com/arthurgray2k/goScaffold/internal/filesystem"
+	"github.com/arthurgray2k/goScaffold/internal/generator"
+	"github.com/arthurgray2k/goScaffold/internal/templates"
+	"github.com/arthurgray2k/goScaffold/internal/variables"
 )
 
 func newCreateCmd(manager templates.Manager) *cobra.Command {
