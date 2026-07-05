@@ -104,7 +104,7 @@ go build -o goscaffold ./cmd/goscaffold
 
 ## Release Process
 
-Releases are completely automated via GitHub Actions and [GoReleaser](https://goreleaser.com/).
+Releases are completely automated via GitHub Actions native builds.
 
 To trigger a new release:
 1. Ensure your working tree is clean and you're on `main`.

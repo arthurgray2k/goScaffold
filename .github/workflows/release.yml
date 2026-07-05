@@ -9,13 +9,36 @@ permissions:
   contents: write
 
 jobs:
-  goreleaser:
+  build:
+    name: Build Release Binaries
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - goos: linux
+            goarch: amd64
+            ext: ""
+            archive: tar.gz
+          - goos: linux
+            goarch: arm64
+            ext: ""
+            archive: tar.gz
+          - goos: windows
+            goarch: amd64
+            ext: ".exe"
+            archive: zip
+          - goos: darwin
+            goarch: amd64
+            ext: ""
+            archive: tar.gz
+          - goos: darwin
+            goarch: arm64
+            ext: ""
+            archive: tar.gz
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # needed for goreleaser to generate changelog properly
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -23,11 +46,54 @@ jobs:
           go-version-file: 'go.mod'
           cache: true
 
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v5
-        with:
-          distribution: goreleaser
-          version: latest
-          args: release --clean
+      - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 0
+        run: |
+          mkdir -p build
+          go build -trimpath -o build/goscaffold${{ matrix.ext }} ./cmd/goscaffold
+
+      - name: Archive
+        id: archive
+        run: |
+          cd build
+          ARCHIVE_NAME="goscaffold_${{ matrix.goos }}_${{ matrix.goarch }}.${{ matrix.archive }}"
+          if [ "${{ matrix.archive }}" = "zip" ]; then
+            zip $ARCHIVE_NAME goscaffold${{ matrix.ext }}
+          else
+            tar -czf $ARCHIVE_NAME goscaffold${{ matrix.ext }}
+          fi
+          sha256sum $ARCHIVE_NAME > $ARCHIVE_NAME.sha256
+          echo "archive_name=$ARCHIVE_NAME" >> $GITHUB_OUTPUT
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.archive.outputs.archive_name }}
+          path: |
+            build/${{ steps.archive.outputs.archive_name }}
+            build/${{ steps.archive.outputs.archive_name }}.sha256
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Generate Global Checksum
+        run: |
+          cd artifacts
+          cat *.sha256 > checksums.txt
+          rm *.sha256
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
