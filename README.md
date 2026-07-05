@@ -2,7 +2,6 @@
 
 [![Build Status](https://github.com/arthurgray2k/goScaffold/actions/workflows/ci.yml/badge.svg)](https://github.com/arthurgray2k/goScaffold/actions/workflows/ci.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/arthurgray2k/goScaffold.svg)](https://pkg.go.dev/github.com/arthurgray2k/goScaffold)
-[![Go Report Card](https://goreportcard.com/badge/github.com/arthurgray2k/goScaffold)](https://goreportcard.com/report/github.com/arthurgray2k/goScaffold)
 [![GitHub Release](https://img.shields.io/github/v/release/arthurgray2k/goScaffold)](https://github.com/arthurgray2k/goScaffold/releases)
 
 `goScaffold` is a robust, clean-architecture CLI application and reusable Go library that generates the skeleton of new Go projects from reusable templates.
