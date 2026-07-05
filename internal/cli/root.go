@@ -37,7 +37,7 @@ func Execute(templatesFS fs.FS) {
 	rootCmd.AddCommand(newVersionCmd())
 	rootCmd.AddCommand(newListCmd(tmplManager))
 	rootCmd.AddCommand(newInfoCmd(tmplManager))
-	rootCmd.AddCommand(newNewCmd(tmplManager))
+	rootCmd.AddCommand(newCreateCmd(tmplManager))
 
 
 	// Store config in context for subcommands to use
