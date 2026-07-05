@@ -18,4 +18,11 @@ cd goScaffold
 go install ./cmd/goscaffold
 ```
 
+## Uninstallation
+To remove `goScaffold` from your system, simply delete the executable from your Go bin directory:
+
+```bash
+rm $(go env GOPATH)/bin/goscaffold
+```
+
 For more details on commands and workflows, please see [USAGE.md](USAGE.md).
