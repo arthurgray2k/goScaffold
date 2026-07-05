@@ -51,6 +51,10 @@ func (g *Generator) Generate(opts Options) error {
 		if path == "." {
 			return nil
 		}
+		
+		if filepath.Base(path) == ".gitkeep" {
+			return nil
+		}
 
 		destPath := filepath.Join(opts.DestDir, filepath.FromSlash(path))
 		destPath = strings.ReplaceAll(destPath, "__PROJECT_NAME__", opts.Values.ProjectName)
