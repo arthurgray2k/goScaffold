@@ -1,0 +1,15 @@
+# Binaries
+bin/
+{{PROJECT_NAME}}
+
+# OS files
+.DS_Store
+
+# IDEs
+.idea/
+.vscode/
+
+# Build artifacts
+*.exe
+*.o
+*.a
