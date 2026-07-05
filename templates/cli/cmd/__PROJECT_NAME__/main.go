@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"os"
+	"{{MODULE_NAME}}/internal/cli"
+)
 
 func main() {
-	fmt.Println("CLI tool running...")
+	if err := cli.Execute(); err != nil {
+		os.Exit(1)
+	}
 }
